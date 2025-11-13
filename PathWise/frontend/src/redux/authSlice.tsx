@@ -19,7 +19,7 @@ export const loginUser = createAsyncThunk(
     "auth/loginUser",
     async (credentials: { email: string; password: string }, { rejectWithValue }) => {
         try {
-            const response = await axios.post("http://localhost:5001/api/auth/login", credentials);
+            const response = await axios.post("https://pathwise-backend-uyk6.onrender.com/api/auth/login", credentials);
             const { token, user } = response.data;
             localStorage.setItem("token", token);
             return { token, user };
@@ -36,7 +36,7 @@ export const registerUser = createAsyncThunk(
         { rejectWithValue }
     ) => {
         try {
-            const response = await axios.post("http://localhost:5001/api/auth/register", userData);
+            const response = await axios.post("https://pathwise-backend-uyk6.onrender.com/api/auth/register", userData);
             const { token, user } = response.data;
             localStorage.setItem("token", token);
             return { token, user };
@@ -51,7 +51,7 @@ export const fetchProfile = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5001/api/auth/perfil", {
+            const response = await axios.get("https://pathwise-backend-uyk6.onrender.com/api/auth/perfil", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             return response.data;

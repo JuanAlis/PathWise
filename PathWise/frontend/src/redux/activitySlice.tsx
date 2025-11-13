@@ -33,7 +33,7 @@ export const fetchActivities = createAsyncThunk(
     "activities/fetchActivities",
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axios.get("http://localhost:5001/api/activities");
+            const response = await axios.get("https://pathwise-backend-uyk6.onrender.com/api/activities");
             return response.data;
         } catch (error: any) {
             return rejectWithValue("Error al cargar actividades");
@@ -54,7 +54,7 @@ export const createActivity = createAsyncThunk(
     ) => {
         try {
             const response = await axios.post(
-                "http://localhost:5001/api/activities",
+                "https://pathwise-backend-uyk6.onrender.com/api/activities",
                 { titulo, descripcion, fecha_inicio },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -74,7 +74,7 @@ export const inscribirseActividad = createAsyncThunk(
     async ({ id, token }: { id: string; token: string }, { rejectWithValue }) => {
         try {
             const response = await axios.post(
-                `http://localhost:5001/api/activities/${id}/inscribirse`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${id}/inscribirse`,
                 {},
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -118,7 +118,7 @@ export const hacerPregunta = createAsyncThunk(
     ) => {
         try {
             const response = await axios.post(
-                `http://localhost:5001/api/activities/${id}/preguntar`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${id}/preguntar`,
                 { contenido },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -144,7 +144,7 @@ export const responderPregunta = createAsyncThunk(
     ) => {
         try {
             const response = await axios.post(
-                `http://localhost:5001/api/activities/${activityId}/pregunta/${preguntaId}/responder`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${activityId}/pregunta/${preguntaId}/responder`,
                 { respuesta },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -170,7 +170,7 @@ export const eliminarPregunta = createAsyncThunk(
     ) => {
         try {
             await axios.delete(
-                `http://localhost:5001/api/activities/${activityId}/pregunta/${preguntaId}`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${activityId}/pregunta/${preguntaId}`,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
@@ -196,7 +196,7 @@ export const editarPregunta = createAsyncThunk(
     ) => {
         try {
             const response = await axios.put(
-                `http://localhost:5001/api/activities/${activityId}/pregunta/${preguntaId}`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${activityId}/pregunta/${preguntaId}`,
                 { contenido },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -223,7 +223,7 @@ export const editarRespuesta = createAsyncThunk(
     ) => {
         try {
             const response = await axios.put(
-                `http://localhost:5001/api/activities/${activityId}/pregunta/${preguntaId}/respuesta`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${activityId}/pregunta/${preguntaId}/respuesta`,
                 { respuesta },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -248,7 +248,7 @@ export const eliminarRespuesta = createAsyncThunk(
     ) => {
         try {
             const response = await axios.put(
-                `http://localhost:5001/api/activities/${activityId}/pregunta/${preguntaId}/respuesta`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${activityId}/pregunta/${preguntaId}/respuesta`,
                 { respuesta: "" },
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -269,7 +269,7 @@ export const desinscribirseActividad = createAsyncThunk(
     ) => {
         try {
             const response = await axios.post(
-                `http://localhost:5001/api/activities/${id}/desinscribirse`,
+                `https://pathwise-backend-uyk6.onrender.com/api/activities/${id}/desinscribirse`,
                 {},
                 {
                     headers: { Authorization: `Bearer ${token}` },
@@ -287,7 +287,7 @@ export const deleteActivity = createAsyncThunk(
     "activities/deleteActivity",
     async ({ id, token }: { id: string; token: string }, { rejectWithValue }) => {
         try {
-            await axios.delete(`http://localhost:5001/api/activities/${id}`, {
+            await axios.delete(`https://pathwise-backend-uyk6.onrender.com/api/activities/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             return id; // devolvemos solo el ID eliminada

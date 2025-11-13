@@ -24,7 +24,7 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, { rejec
     try {
         const token = localStorage.getItem("token");
         console.log("📦 Token en fetchUsers:", token);
-        const response = await axios.get<User[]>("http://localhost:5001/api/users", {
+        const response = await axios.get<User[]>("https://pathwise-backend-uyk6.onrender.com/api/users", {
             headers: { Authorization: `Bearer ${token}` },
         });
         return response.data;
@@ -38,7 +38,7 @@ export const deleteUser = createAsyncThunk(
     "users/deleteUser",
     async ({ id, token }: { id: string; token: string }, { rejectWithValue }) => {
       try {
-        await axios.delete(`http://localhost:5001/api/users/${id}`, {
+        await axios.delete(`https://pathwise-backend-uyk6.onrender.com/api/users/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         return id;
@@ -61,7 +61,7 @@ export const updateUser = createAsyncThunk(
     ) => {
       try {
         const response = await axios.put(
-          `http://localhost:5001/api/users/${id}`,
+          `https://pathwise-backend-uyk6.onrender.com/api/users/${id}`,
           updatedData,
           {
             headers: { Authorization: `Bearer ${token}` },
